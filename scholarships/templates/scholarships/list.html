@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Scholarship Tracker</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        th { background: #f4f4f4; }
-    </style>
-</head>
-<body>
-    <h1>My Scholarships</h1>
-    <p><a href="{% url 'scholarship_create' %}">+ Add scholarship</a></p>
+{% extends 'scholarships/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="top-bar">
+        <h2>My Scholarships</h2>
+        <a class="btn" href="{% url 'scholarship_create' %}">+ Add scholarship</a>
+    </div>
     <table>
         <tr>
             <th>Name</th>
@@ -27,15 +21,15 @@
             <td>{{ s.country }}</td>
             <td>{{ s.deadline }}</td>
             <td>{{ s.coverage }}</td>
-            <td>{{ s.get_status_display }}</td>
-            <td>
+            <td><span class="badge {{ s.status }}">{{ s.get_status_display }}</span></td>
+            <td class="actions">
                 <a href="{% url 'scholarship_update' s.pk %}">Edit</a> |
-                <a href="{% url 'scholarship_delete' s.pk %}">Delete</a>
+                <a class="delete" href="{% url 'scholarship_delete' s.pk %}">Delete</a>
             </td>
         </tr>
         {% empty %}
         <tr><td colspan="6">No scholarships yet.</td></tr>
         {% endfor %}
     </table>
-</body>
-</html>
+</div>
+{% endblock %}

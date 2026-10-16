@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Delete scholarship</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
-        button { padding: 10px 20px; cursor: pointer; background: #c0392b; color: white; border: none; }
-    </style>
-</head>
-<body>
-    <h1>Delete scholarship?</h1>
+
+{% extends 'scholarships/base.html' %}
+
+{% block title %}Delete scholarship{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Delete scholarship?</h2>
     <p>Are you sure you want to delete <strong>{{ scholarship.name }}</strong>?</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes, delete</button>
-        <a href="{% url 'scholarship_list' %}">Cancel</a>
+        <button class="btn btn-danger" type="submit">Yes, delete</button>
+        <a class="link-muted" href="{% url 'scholarship_list' %}">Cancel</a>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}
