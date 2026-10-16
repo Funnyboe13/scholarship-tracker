@@ -6,6 +6,14 @@
         <h2>My Scholarships</h2>
         <a class="btn" href="{% url 'scholarship_create' %}">+ Add scholarship</a>
     </div>
+
+    <div class="filters">
+        <a class="chip {% if not current_status %}active{% endif %}" href="{% url 'scholarship_list' %}">All</a>
+        {% for value, label in status_choices %}
+        <a class="chip {% if current_status == value %}active{% endif %}" href="?status={{ value }}">{{ label }}</a>
+        {% endfor %}
+    </div>
+
     <table>
         <tr>
             <th>Name</th>
@@ -16,10 +24,14 @@
             <th>Actions</th>
         </tr>
         {% for s in scholarships %}
-        <tr>
+        <tr class="{{ s.urgency }}">
             <td>{{ s.name }}</td>
             <td>{{ s.country }}</td>
-            <td>{{ s.deadline }}</td>
+            <td>
+                {{ s.deadline }}
+                {% if s.urgency == 'soon' %}<br><small class="tag-soon">Due soon</small>{% endif %}
+                {% if s.urgency == 'overdue' %}<br><small class="tag-overdue">Deadline passed</small>{% endif %}
+            </td>
             <td>{{ s.coverage }}</td>
             <td><span class="badge {{ s.status }}">{{ s.get_status_display }}</span></td>
             <td class="actions">
@@ -28,7 +40,7 @@
             </td>
         </tr>
         {% empty %}
-        <tr><td colspan="6">No scholarships yet.</td></tr>
+        <tr><td colspan="6">No scholarships found.</td></tr>
         {% endfor %}
     </table>
 </div>

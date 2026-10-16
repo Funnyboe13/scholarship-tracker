@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Scholarship Tracker{% endblock %}</title>
     <style>
+                
         :root {
             --primary: #0f766e;
             --primary-dark: #115e59;
@@ -53,6 +54,14 @@
         input:focus, select:focus, textarea:focus { outline: 2px solid var(--primary); border-color: var(--primary); }
         .errorlist { color: var(--danger); list-style: none; padding: 0; margin: 0 0 6px 0; }
         .helptext { color: var(--muted); font-size: 13px; }
+                .filters { margin-bottom: 18px; }
+        .chip { display: inline-block; padding: 6px 14px; margin: 0 6px 6px 0; border-radius: 999px; background: #e5e7eb; color: var(--text); text-decoration: none; font-size: 14px; }
+        .chip.active { background: var(--primary); color: white; }
+        tr.soon td { background: #fff7ed; }
+        tr.overdue td { background: #fef2f2; }
+        .tag-soon { color: #c2410c; font-weight: 600; }
+        .tag-overdue { color: var(--danger); font-weight: 600; }
+
     </style>
 </head>
 <body>
