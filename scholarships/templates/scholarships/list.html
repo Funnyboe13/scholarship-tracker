@@ -10,8 +10,8 @@
     </style>
 </head>
 <body>
-    <h1>My Scholarships</h1><p><a href="{% url 'scholarship_create' %}">+ Add scholarship</a></p>
-
+    <h1>My Scholarships</h1>
+    <p><a href="{% url 'scholarship_create' %}">+ Add scholarship</a></p>
     <table>
         <tr>
             <th>Name</th>
@@ -19,6 +19,7 @@
             <th>Deadline</th>
             <th>Coverage</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
         {% for s in scholarships %}
         <tr>
@@ -27,9 +28,13 @@
             <td>{{ s.deadline }}</td>
             <td>{{ s.coverage }}</td>
             <td>{{ s.get_status_display }}</td>
+            <td>
+                <a href="{% url 'scholarship_update' s.pk %}">Edit</a> |
+                <a href="{% url 'scholarship_delete' s.pk %}">Delete</a>
+            </td>
         </tr>
         {% empty %}
-        <tr><td colspan="5">No scholarships yet.</td></tr>
+        <tr><td colspan="6">No scholarships yet.</td></tr>
         {% endfor %}
     </table>
 </body>
