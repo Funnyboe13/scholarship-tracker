@@ -2,7 +2,7 @@
 
 A Django web app for keeping track of scholarship applications in one place, so no deadline gets missed. Each user creates an account and gets their own private list.
 
-![Screenshot](screenshot.png)
+![Screenshot](Screenshot.png)
 
 ## Features
 
