@@ -1,17 +1,20 @@
 # Scholarship Tracker
 
-A Django web app for keeping track of scholarship applications in one place, so no deadline gets missed.
+A Django web app for keeping track of scholarship applications in one place, so no deadline gets missed. Each user creates an account and gets their own private list.
 
-![Screenshot](Screenshot.png)
+![Screenshot](screenshot.png)
 
 ## Features
 
+- User accounts: sign up, log in, and log out
+- Every user sees only their own scholarships, and nobody can edit or delete someone else's
+- Welcome popup after logging in or signing up, and confirmation popups when adding, editing, or deleting
 - Add, edit, and delete scholarships
 - Track name, country, deadline, coverage, link, status, and notes
 - Status badges: Not started, In progress, Submitted, Accepted, Rejected
 - Filter the list by status
-- Highlights scholarships due within 7 days, and ones whose deadline has passed
-- Admin panel for managing data
+- Rows are highlighted when a deadline is within 7 days or has already passed
+- Admin panel for managing users and data
 
 ## Built with
 
@@ -54,13 +57,13 @@ A Django web app for keeping track of scholarship applications in one place, so 
    python manage.py runserver
 ```
 
-6. Open http://127.0.0.1:8000 in your browser
+6. Open http://127.0.0.1:8000, create an account with **Sign up**, and start adding scholarships
 
 ## Future improvements
 
-- User accounts, so each person has their own list
 - Email reminders before deadlines
 - Search by name or country
+- Live deployment
 
 ## Author
 
