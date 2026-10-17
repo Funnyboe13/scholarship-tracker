@@ -1,0 +1,15 @@
+{% extends 'scholarships/base.html' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+<div class="card narrow">
+    <h2>Log in</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn" type="submit">Log in</button>
+    </form>
+    <p>New here? <a href="{% url 'signup' %}">Create an account</a></p>
+</div>
+{% endblock %}
